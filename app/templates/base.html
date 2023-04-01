@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>{{ title }} - Blog</title></head>
+    <body>
+        <div>
+            My Page:
+            <a href="{{ url_for('my_page') }}">My page</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+        {% if greeting %}
+            <h1>{{ greeting }} {{ user.username }}</h1>
+        {% else %}
+            <h1>Hello {{ user.username }}</h1>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
