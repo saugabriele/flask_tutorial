@@ -6,6 +6,7 @@
             My Page:
             <a href="{{ url_for('my_page') }}">My page</a>
             <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signin') }}">Sign in</a>
         </div>
         {% if greeting %}
             <h1>{{ greeting }} {{ user.username }}</h1>
