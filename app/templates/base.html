@@ -4,14 +4,21 @@
     <body>
         <div>
             My Page:
-            <a href="{{ url_for('my_page') }}">My page</a>
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('signin') }}">Sign in</a>
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signin') }}">Sign in</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('my_page') }}">My page</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
-        {% if greeting %}
-            <h1>{{ greeting }} {{ user.username }}</h1>
-        {% else %}
-            <h1>Hello {{ user.username }}</h1>
+        {% if current_user.is_authenticated %}
+            {% if greeting %}
+                <h1>{{ greeting }} {{ user.username }}</h1>
+            {% else %}
+                <h1>Hello {{ user.username }}</h1>
+            {% endif %}
         {% endif %}
         {% block content %}{% endblock %}
     </body>
